@@ -1,0 +1,14 @@
+{
+  "name": "NodeJSMicro",
+  "version": "0.0.1",
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
+  "main": "Main.js",
+  "scripts": {
+    "start": "node Main.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+	"body-parser": "^1.13.2"
+  }
+}
