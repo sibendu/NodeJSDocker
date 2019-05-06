@@ -4,7 +4,6 @@ var app = express();
 var fs = require("fs");
 var bodyParser = require('body-parser');
 
-//app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.get('/listUsers', function (req, res) {
@@ -33,13 +32,10 @@ var user = {
 }
 
 app.post('/addUser', function (req, res) {
-   // First read existing users.
    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
        data = JSON.parse( data );
 	   newUsers = req.body;
-       //data["user4"] = user["user4"];
 	   data["user4"] = newUsers.users[1];
-       //console.log( data );
 	   console.log("Printing body now");
 	   console.log(newUsers.users[1]);
 	   
@@ -49,7 +45,6 @@ app.post('/addUser', function (req, res) {
 
 
 app.get('/:id', function (req, res) {
-   // First read existing users.
    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
        users = JSON.parse( data );
        var user = users["user" + req.params.id] 
@@ -65,7 +60,6 @@ app.delete('/deleteUser', function (req, res) {
 
 app.delete('/deleteUser/:id', function (req, res) {
 
-   // First read existing users.
    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
        data = JSON.parse( data );
        delete data["user" + req.params.id];
@@ -77,7 +71,6 @@ app.delete('/deleteUser/:id', function (req, res) {
 
 
 
-//app.listen(process.env.PORT || 8081);
 var server = app.listen(process.env.PORT || 80, function () {
 
   var host = server.address().address;
